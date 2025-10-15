@@ -63,15 +63,22 @@ en la zona de la logica
 
 
 
-📦 Funcionalidades implementadas
-✅ Agregar producto (si ya existe, incrementa la cantidad).
-✅ Eliminar producto del carrito.
-✅ Actualizar cantidad (con botones + / –).
-✅ Vaciar carrito completamente.
-✅ Mostrar total de productos y monto total.
-✅ Contador visible en el botón del carrito (solo si hay productos).
-✅ Interfaz con Offcanvas de Bootstrap (panel lateral deslizable).
-✅ Persistencia con localStorage.
+📦 Funcionalidades implementadas – Etapa 3: Carrito 1 (con props)
+✅ Agregar producto: si ya existe en el carrito, incrementa su cantidad.
+✅ Eliminar producto: elimina un ítem específico del carrito.
+✅ Actualizar cantidad: botones + y – para modificar unidades directamente en el Offcanvas.
+✅ Vaciar carrito: con confirmación previa para evitar acciones accidentales.
+✅ Enviar pedido: envía el carrito simulado a https://dummyjson.com/carts/add con confirmación de compra.
+✅ Mostrar totales:
+    Total de productos únicos.
+    Cantidad total de ítems.
+    Monto total a pagar (suma de precio × cantidad).
+✅ Indicador visual en tarjetas: badge amarillo con la cantidad si el producto está en el carrito.
+✅ Contador en el botón del carrito: solo visible si hay productos (Carrito (3)).
+✅ Interfaz con Offcanvas de Bootstrap: panel lateral deslizable con resumen del carrito.
+✅ Persistencia con localStorage: el carrito se mantiene entre recargas y sesiones.
+
+
 
 ⚠️ Limitaciones de esta versión (para reflexión)
     Prop drilling: el carrito y sus funciones se pasan por muchos niveles de componentes.
