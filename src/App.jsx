@@ -36,8 +36,8 @@ const App = () => {
 
 
 
-    // 🔹 Estado del carrito: array de productos con cantidad
-    const [carrito, setCarrito] = useState(getInitialCart);
+  // 🔹 Estado del carrito: array de productos con cantidad
+  const [carrito, setCarrito] = useState(getInitialCart);
 
   // Guardar carrito en localStorage cada vez que cambie
   useEffect(() => {
@@ -45,46 +45,88 @@ const App = () => {
   }, [carrito]);
 
 
-    // 🔹 Función para agregar producto al carrito
-    const agregarAlCarrito = (producto) => {
-        setCarrito(prev => {
-            // Ver si ya existe en el carrito
-            const existe = prev.find(item => item.id === producto.id);
-            if (existe) {
-                // Actualizar cantidad
-                return prev.map(item =>
-                    item.id === producto.id
-                        ? { ...item, cantidad: item.cantidad + 1 }
-                        : item
-                );
-            } else {
-                // Agregar nuevo producto con cantidad 1
-                return [...prev, { ...producto, cantidad: 1 }];
-            }
-        });
-    };
-
-    // 🔹 Función para eliminar producto del carrito
-    const eliminarDelCarrito = (id) => {
-        setCarrito(prev => prev.filter(item => item.id !== id));
-    };
-
-    // 🔹 Función para actualizar cantidad
-    const actualizarCantidad = (id, nuevaCantidad) => {
-        if (nuevaCantidad < 1) return;
-        setCarrito(prev =>
-            prev.map(item =>
-                item.id === id
-                    ? { ...item, cantidad: nuevaCantidad }
-                    : item
-            )
+  // 🔹 Función para agregar producto al carrito
+  const agregarAlCarrito = (producto) => {
+    setCarrito(prev => {
+      // Ver si ya existe en el carrito
+      const existe = prev.find(item => item.id === producto.id);
+      if (existe) {
+        // Actualizar cantidad
+        return prev.map(item =>
+          item.id === producto.id
+            ? { ...item, cantidad: item.cantidad + 1 }
+            : item
         );
-    };
+      } else {
+        // Agregar nuevo producto con cantidad 1
+        return [...prev, { ...producto, cantidad: 1 }];
+      }
+    });
+  };
 
-    // 🔹 Función para vaciar carrito
-    const vaciarCarrito = () => {
-        setCarrito([]);
-    };
+  // 🔹 Función para eliminar producto del carrito
+  const eliminarDelCarrito = (id) => {
+    setCarrito(prev => prev.filter(item => item.id !== id));
+  };
+
+  // 🔹 Función para actualizar cantidad
+  const actualizarCantidad = (id, nuevaCantidad) => {
+    if (nuevaCantidad < 1) return;
+    setCarrito(prev =>
+      prev.map(item =>
+        item.id === id
+          ? { ...item, cantidad: nuevaCantidad }
+          : item
+      )
+    );
+  };
+
+
+  // 🔹 Función para vaciar carrito
+  const vaciarCarrito = () => {
+    const confirmacion = window.confirm("¿Está seguro de que desea vaciar el carrito?");
+    if (confirmacion) {
+      setCarrito([]);
+    }
+  };
+
+  // 🔹 Función para enviar el pedido
+  const enviarPedido = () => {
+    const confirmacion = window.confirm("¿Desea finalizar la compra?");
+    if (!confirmacion) return; // Sale si cancela
+    // Validar carrito vacío
+    if (carrito.length === 0) {
+      alert("El carrito está vacío");
+      return;
+    }
+
+    fetch("https://dummyjson.com/carts/add", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        userId: 1,
+        products: carrito.map((item) => ({
+          id: item.id,
+          quantity: item.cantidad,
+        })),
+      }),
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`Error ${res.status}: ${res.statusText}`);
+        }
+        return res.json();
+      })
+      .then((data) => {
+        console.log("Pedido creado:", data);
+        alert("✅ ¡Gracias por su compra!\nID del carrito: " + data.id);
+        setCarrito([]); // Vaciar SOLO si fue exitoso
+      })
+      .catch((error) => {
+        console.error("Error al procesar la compra:", error);
+        alert("❌ Error al procesar la compra:\n" + error.message);
+      });
+  };
 
 
 
@@ -96,37 +138,38 @@ const App = () => {
   return (
     <BrowserRouter>
       <div className="app">
-         <Header 
-          darkMode={darkMode} 
-          toggleTheme={toggleTheme} 
-          carrito={carrito} 
+        <Header
+          darkMode={darkMode}
+          toggleTheme={toggleTheme}
+          carrito={carrito}
           agregarAlCarrito={agregarAlCarrito}
           eliminarDelCarrito={eliminarDelCarrito}
           actualizarCantidad={actualizarCantidad}
           vaciarCarrito={vaciarCarrito}
-          />
-         <Routes>
+          enviarPedido={enviarPedido}
+        />
+        <Routes>
           <Route path="/" element={<Inicio />} />
           <Route path="/inicio" element={<Inicio />} />
-           
-          <Route path="/movil" element={<Movil carrito={carrito} agregarAlCarrito={agregarAlCarrito}/>} />
-          <Route path="/laptop" element={<Laptop carrito={carrito} agregarAlCarrito={agregarAlCarrito}/>} />
+
+          <Route path="/movil" element={<Movil carrito={carrito} agregarAlCarrito={agregarAlCarrito} />} />
+          <Route path="/laptop" element={<Laptop carrito={carrito} agregarAlCarrito={agregarAlCarrito} />} />
 
           <Route path="/tienda" element={<Tienda carrito={carrito} agregarAlCarrito={agregarAlCarrito} />} />
 
           <Route path="/tablas" element={<Tablas />} />
-          <Route path="/categorias/:id" element={<Categorias carrito={carrito} agregarAlCarrito={agregarAlCarrito}/>} />
+          <Route path="/categorias/:id" element={<Categorias carrito={carrito} agregarAlCarrito={agregarAlCarrito} />} />
           <Route path="/detalle/:id/:nombre" element={<Detalle />} />
-          <Route path="/busquedas" element={<Busquedas carrito={carrito} agregarAlCarrito={agregarAlCarrito}/>} />
-           <Route path="/resumen" element={<Resumen/>} />
-           <Route path="/glosario" element={<Glosario/>} />
-           <Route path="/autoevaluacion" element={<Autoevaluacion/>} />
+          <Route path="/busquedas" element={<Busquedas carrito={carrito} agregarAlCarrito={agregarAlCarrito} />} />
+          <Route path="/resumen" element={<Resumen />} />
+          <Route path="/glosario" element={<Glosario />} />
+          <Route path="/autoevaluacion" element={<Autoevaluacion />} />
 
           <Route path="*" element={<Inicio />} />
 
-         </Routes>
+        </Routes>
 
-        <Footer/>
+        <Footer />
       </div>
     </BrowserRouter>
   )

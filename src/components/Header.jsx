@@ -7,7 +7,7 @@ import FiltroCategorias from "./Filtrocategorias";
 import CarritoOffcanvas from "./CarritoOffcanvas";
 
 import { FaShoppingCart } from "react-icons/fa";
-const Header = ({ darkMode, toggleTheme, carrito, agregarAlCarrito, eliminarDelCarrito, actualizarCantidad, vaciarCarrito  }) => {
+const Header = ({ darkMode, toggleTheme, carrito, agregarAlCarrito, eliminarDelCarrito, actualizarCantidad, vaciarCarrito, enviarPedido  }) => {
     const [txtbuscar, setTxtbuscar] = useState('');
 
     const manejoTxt = (event) => {
@@ -113,6 +113,7 @@ const Header = ({ darkMode, toggleTheme, carrito, agregarAlCarrito, eliminarDelC
                 eliminarDelCarrito={eliminarDelCarrito}
                 actualizarCantidad={actualizarCantidad}
                 vaciarCarrito={vaciarCarrito}
+                 enviarPedido={enviarPedido}
             />
         </>
 

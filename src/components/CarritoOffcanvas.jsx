@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { formatCurrency, formatNumber } from '../util/funciones';
 
-const CarritoOffcanvas = ({ carrito, eliminarDelCarrito, actualizarCantidad, vaciarCarrito }) => {
+const CarritoOffcanvas = ({ carrito, eliminarDelCarrito, actualizarCantidad, vaciarCarrito, enviarPedido }) => {
         const [total, setTotal] = useState(0);
 
     // Calcular total cada vez que cambia el carrito
@@ -71,8 +71,8 @@ const CarritoOffcanvas = ({ carrito, eliminarDelCarrito, actualizarCantidad, vac
                             >
                                 Vaciar Carrito
                             </button>
-                            <button className="btn btn-success w-100">
-                                Comprar
+                            <button onClick={enviarPedido} className="btn btn-primary w-100">
+                            📤 Enviar Pedido
                             </button>
                         </div>
                     </>
