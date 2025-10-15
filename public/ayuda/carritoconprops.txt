@@ -1,0 +1,88 @@
+🛒 Etapa 3: Carrito de Compras – Versión 1 (Gestión con Props)
+🎯 Objetivo
+Implementar un carrito de compras funcional que permita a los usuarios:
+
+Agregar productos desde la tienda o tarjetas.
+Ver el contenido del carrito en un panel lateral (Offcanvas de Bootstrap).
+Modificar cantidades, eliminar productos y vaciar el carrito.
+Persistir el carrito entre recargas de la página usando localStorage.
+Esta versión no usa Context API, sino que gestiona el estado del carrito en el componente raíz (App.jsx) y lo pasa como prop a los componentes que lo necesitan.
+
+
+Arquitectura del Estado
+Componente                      Responsabilidad
+----------------------------------------------------------------------------------------------------------
+App.jsx                         - Contiene el estado del carrito (useState).
+                                - Define funciones para gestionarlo (agregar,eliminar, etc.).
+                                - Persiste el carrito en localStorage       
+                                - Pasa el carrito y sus funciones como props.
+
+Header.jsx                      - Muestra un botón con el número de productos.
+                                - Renderiza el CarritoOffcanvas
+                                - Recibe el carrito y las funciones como props.
+
+Cardprod.jsx                    - Muestra un botón “+ Agregar”.
+                                - Llama a agregarAlCarrito al hacer clic.
+                                - Recibe la función como prop.
+
+Tienda.jsx                      - Renderiza la lista de productos.
+                                - Pasa agregarAlCarrito a cada Cardprod
+
+CarritoOffcanvas.jsx            - Muestra los productos del carrito.    
+                                - Permite modificar cantidades, eliminar y vaciar.
+                                - Usa las funciones recibidas por props (¡no tiene estado propio!).
+
+
+
+💾 Persistencia con localStorage
+Para que el carrito no se pierda al recargar la página, se utiliza localStorage:
+
+✅ Inicialización segura del estado:
+
+en la zona de importacion 
+    const getInitialCart = () => {
+    try {
+        const saved = localStorage.getItem("cart");
+        return saved ? JSON.parse(saved) : [];
+    } catch (e) {
+        console.error("Error al cargar el carrito");
+        return [];
+    }
+    };
+
+en la zona de la logica 
+    const [carrito, setCarrito] = useState(getInitialCart);
+
+    ✅ Guardado automático:
+
+    useEffect(() => {
+        localStorage.setItem("cart", JSON.stringify(carrito));
+    }, [carrito]); // al cambiar el carrito actualiza el cart
+
+    ✨ Ventaja: El carrito sobrevive a recargas, cierres del navegador y navegación. 
+
+
+
+📦 Funcionalidades implementadas
+✅ Agregar producto (si ya existe, incrementa la cantidad).
+✅ Eliminar producto del carrito.
+✅ Actualizar cantidad (con botones + / –).
+✅ Vaciar carrito completamente.
+✅ Mostrar total de productos y monto total.
+✅ Contador visible en el botón del carrito (solo si hay productos).
+✅ Interfaz con Offcanvas de Bootstrap (panel lateral deslizable).
+✅ Persistencia con localStorage.
+
+⚠️ Limitaciones de esta versión (para reflexión)
+    Prop drilling: el carrito y sus funciones se pasan por muchos niveles de componentes.
+    Difícil de escalar: si más componentes necesitan el carrito, hay que seguir pasando props.
+    Acoplamiento: muchos componentes dependen directamente de App.jsx.
+    💡 Esto prepara el terreno para la próxima etapa: usar Context API como solución a estos problemas. 
+
+📌 Conclusión
+Esta versión del carrito:
+
+Es funcional, robusta y didáctica.
+Refuerza los fundamentos de React (estado, props, efectos).
+Introduce buenas prácticas de persistencia.
+Sirve como base para entender por qué necesitamos Context API en aplicaciones más grandes.

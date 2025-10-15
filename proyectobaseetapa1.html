@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etapas del Proyecto Tienda Online con React</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0a192f;
+            color: #cdd6f4;
+        }
+        .hero {
+            background: linear-gradient(to right, #8e2de2, #4a00e0);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            border-radius: 0.5rem;
+            border: 1px solid #4a00e0;
+        }
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 18px;
+            height: 100%;
+            width: 4px;
+            background: #30363d;
+        }
+        .timeline-item {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+        .timeline-icon {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #8e2de2;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            border: 3px solid #0a192f;
+        }
+        .timeline-content {
+            margin-left: 60px;
+            background: #1c2b41;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid #30363d;
+        }
+        .timeline-content h3 {
+            color: #c397fb;
+        }
+        .text-center h2 {
+            color: #c397fb;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container mt-5">
+        <div class="hero mb-5">
+            <h1>Tu Viaje para Crear una Tienda Online con React</h1>
+            <p class="lead">Aprende paso a paso a construir una aplicación web moderna, desde la configuración inicial hasta funcionalidades avanzadas como búsquedas y paginación.</p>
+        </div>
+
+        <div class="timeline">
+            <!-- Etapa 1 -->
+            <div class="timeline-item">
+                <div class="timeline-icon">1</div>
+                <div class="timeline-content">
+                    <h3>Etapa 1: Fundamentos y Configuración</h3>
+                    <p>Comenzarás desde cero, inicializando tu proyecto con <strong>Vite</strong>, una herramienta moderna y ultrarrápida. Aprenderás a instalar dependencias esenciales como <strong>React Router</strong> para la navegación y <strong>Bootstrap</strong> para dar un estilo profesional a tu aplicación desde el primer momento.</p>
+                </div>
+            </div>
+            <!-- Etapa 2 -->
+            <div class="timeline-item">
+                <div class="timeline-icon">2</div>
+                <div class="timeline-content">
+                    <h3>Etapa 2: Estructura y Navegación</h3>
+                    <p>Organizar el código es clave. Crearás una estructura de carpetas lógica para tus <strong>componentes</strong> (piezas reutilizables de UI) y <strong>páginas</strong>. Implementarás un sistema de rutas para que los usuarios puedan navegar fluidamente entre las diferentes secciones de tu tienda.</p>
+                </div>
+            </div>
+            <!-- Etapa 3 -->
+            <div class="timeline-item">
+                <div class="timeline-icon">3</div>
+                <div class="timeline-content">
+                    <h3>Etapa 3: Contenido Dinámico desde una API</h3>
+                    <p>Darás vida a tu tienda consumiendo datos de una API externa (<strong>dummyjson</strong>). Aprenderás a usar los hooks <code>useState</code> y <code>useEffect</code> de React para solicitar datos y mostrarlos dinámicamente, creando una experiencia de usuario interactiva y realista.</p>
+                </div>
+            </div>
+            <!-- Etapa 4 -->
+            <div class="timeline-item">
+                <div class="timeline-icon">4</div>
+                <div class="timeline-content">
+                    <h3>Etapa 4: Componentes Reutilizables y Rutas Dinámicas</h3>
+                    <p>Optimizarás tu desarrollo creando componentes que puedas usar en múltiples lugares. Implementarás <strong>rutas dinámicas</strong> que muestren contenido específico según la categoría de producto que elija el usuario, utilizando el hook <code>useParams</code> para leer la URL.</p>
+                </div>
+            </div>
+            <!-- Etapa 5 -->
+            <div class="timeline-item">
+                <div class="timeline-icon">5</div>
+                <div class="timeline-content">
+                    <h3>Etapa 5: Página de Detalle del Producto</h3>
+                    <p>Crearás una página de detalle para cada producto. Aprenderás a pasar múltiples parámetros en la URL (como el ID y el nombre del producto) y a usarlos para obtener y mostrar la información detallada, completando el ciclo de compra.</p>
+                </div>
+            </div>
+            <!-- Etapa 6 -->
+            <div class="timeline-item">
+                <div class="timeline-icon">6</div>
+                <div class="timeline-content">
+                    <h3>Etapa 6: Funcionalidades Avanzadas: Paginación y Búsqueda</h3>
+                    <p>Para manejar grandes catálogos de productos, implementarás una <strong>paginación</strong> eficiente. Finalmente, añadirás una barra de <strong>búsqueda</strong> funcional, aprendiendo a comunicar componentes y a manejar el estado de la aplicación de forma programática con <code>useNavigate</code> y <code>useLocation</code>.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center my-5">
+            <h2>¡Felicidades!</h2>
+            <p>Al completar este proyecto, no solo tendrás las bases para construir una tienda online funcional, sino que habrás dominado los conceptos fundamentales y avanzados de React que son esenciales en el desarrollo web moderno.</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso Interactivo de React con Vite</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 4.5rem;
+        }
+        .module {
+            display: none;
+        }
+        .module.active {
+            display: block;
+        }
+        .quiz-question {
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body data-bs-theme="dark">
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Curso React</a>
+            <div class="progress w-50" style="height: 25px;">
+                <div id="progressBar" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div id="courseContent">
+            <!-- Modulo 1 -->
+            <div id="module1" class="module active">
+                <h2>Módulo 1: Instalación y Dependencias</h2>
+                <p>En este módulo aprenderás a inicializar un proyecto de React con Vite y a instalar las dependencias básicas.</p>
+                <pre><code>
+# Crear el proyecto en la carpeta actual
+npm create vite@latest .
+
+# Instalar dependencias del proyecto
+npm install
+
+# Instalar dependencias adicionales
+npm install react-router-dom bootstrap@5.3.3 react-icons
+                </code></pre>
+                <div class="quiz mt-4">
+                    <h4>Autoevaluación</h4>
+                    <div id="quiz1">
+                        <div class="quiz-question">
+                            <p>1. ¿Qué comando se usa para crear un nuevo proyecto de Vite en el directorio actual?</p>
+                            <div class="form-check"><input class="form-check-input" type="radio" name="q1_1" value="a"><label class="form-check-label">npm new vite</label></div>
+                            <div class="form-check"><input class="form-check-input" type="radio" name="q1_1" value="b"><label class="form-check-label">npm create vite@latest .</label></div>
+                        </div>
+                        <p>2. ¿Para qué se utiliza `react-router-dom`?</p>
+                        <div class="form-check"><input class="form-check-input" type="radio" name="q1_2" value="a"><label class="form-check-label">Para gestionar rutas y navegación.</label></div>
+                        <div class="form-check"><input class="form-check-input" type="radio" name="q1_2" value="b"><label class="form-check-label">Para estilos.</label></div>
+                    </div>
+                    <button class="btn btn-primary" onclick="checkQuiz(1)">Revisar</button>
+                    <div id="quizResult1" class="mt-2"></div>
+                </div>
+            </div>
+
+            <!-- Modulo 2 -->
+            <div id="module2" class="module">
+                <h2>Módulo 2: Configuración de Bootstrap</h2>
+                <p>Hay dos formas de integrar Bootstrap. Puedes agregarlo en <code>index.html</code> o importarlo en <code>main.jsx</code>.</p>
+                <h5>Método 1: En <code>index.html</code></h5>
+                <pre><code>
+&lt;link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"&gt;
+&lt;script type="module" src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"&gt;&lt;/script&gt;
+                </code></pre>
+                <h5>Método 2: En <code>main.jsx</code></h5>
+                <pre><code>
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+                </code></pre>
+                <div class="quiz mt-4">
+                    <h4>Autoevaluación</h4>
+                     <div id="quiz2">
+                        <p>1. ¿En qué archivo se importa Bootstrap si se usa el segundo método?</p>
+                        <div class="form-check"><input class="form-check-input" type="radio" name="q2_1" value="a"><label class="form-check-label">App.jsx</label></div>
+                        <div class="form-check"><input class="form-check-input" type="radio" name="q2_1" value="b"><label class="form-check-label">main.jsx</label></div>
+                    </div>
+                    <button class="btn btn-primary" onclick="checkQuiz(2)">Revisar</button>
+                    <div id="quizResult2" class="mt-2"></div>
+                </div>
+            </div>
+
+            <!-- Modulo 3 -->
+            <div id="module3" class="module">
+                <h2>Módulo 3: Limpieza y Configuración del Tema</h2>
+                <p>Para empezar, es buena práctica limpiar los estilos por defecto y configurar el tema de la aplicación.</p>
+                <ul>
+                    <li>Limpiar <code>App.css</code> y <code>index.css</code>.</li>
+                    <li>Limpiar <code>App.jsx</code> y usar la extensión <code>ES7+ React/Redux/React-Native snippets</code> para generar un componente base con <code>rafce</code>.</li>
+                    <li>Añadir un tema oscuro en <code>index.html</code>: <code>&lt;body data-bs-theme="dark"&gt;</code>.</li>
+                </ul>
+                <div class="quiz mt-4">
+                    <h4>Autoevaluación</h4>
+                    <p>1. ¿Qué snippet se usa para crear un componente funcional de React rápidamente?</p>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q3_1" value="a"><label class="form-check-label">rafce</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q3_1" value="b"><label class="form-check-label">react-component</label></div>
+                    <button class="btn btn-primary" onclick="checkQuiz(3)">Revisar</button>
+                    <div id="quizResult3" class="mt-2"></div>
+                </div>
+            </div>
+
+            <!-- Modulo 4 -->
+            <div id="module4" class="module">
+                <h2>Módulo 4: Estructura de Carpetas</h2>
+                <p>Organizar el código es clave. Crearemos carpetas para los componentes reutilizables y las páginas de la aplicación.</p>
+                <ul>
+                    <li><code>src/components</code>: Para componentes como Header, Footer, etc.</li>
+                    <li><code>src/pages</code>: Para las páginas principales como Inicio, Tienda, etc.</li>
+                </ul>
+                <div class="quiz mt-4">
+                    <h4>Autoevaluación</h4>
+                    <p>1. ¿Dónde colocarías un componente de `TarjetaProducto`?</p>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q4_1" value="a"><label class="form-check-label">src/pages</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q4_1" value="b"><label class="form-check-label">src/components</label></div>
+                    <button class="btn btn-primary" onclick="checkQuiz(4)">Revisar</button>
+                    <div id="quizResult4" class="mt-2"></div>
+                </div>
+            </div>
+
+            <!-- Modulo 5 -->
+            <div id="module5" class="module">
+                <h2>Módulo 5: Sistema de Rutas</h2>
+                <p>Usando <code>react-router-dom</code>, configuramos la navegación de nuestra aplicación.</p>
+                <pre><code>
+import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
+
+// En tu componente de menú
+&lt;Link to="/inicio"&gt;Inicio&lt;/Link&gt;
+
+// En App.jsx
+&lt;BrowserRouter&gt;
+  &lt;Routes&gt;
+    &lt;Route path="/" element={&lt;Inicio /&gt;} /&gt;
+    &lt;Route path="/tienda" element={&lt;Tienda /&gt;} /&gt;
+  &lt;/Routes&gt;
+&lt;/BrowserRouter&gt;
+                </code></pre>
+                <div class="quiz mt-4">
+                    <h4>Autoevaluación</h4>
+                    <p>1. ¿Qué componente de `react-router-dom` se usa para crear enlaces de navegación?</p>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q5_1" value="a"><label class="form-check-label">Route</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q5_1" value="b"><label class="form-check-label">Link</label></div>
+                    <button class="btn btn-primary" onclick="checkQuiz(5)">Revisar</button>
+                    <div id="quizResult5" class="mt-2"></div>
+                </div>
+            </div>
+
+            <!-- Modulo 6 -->
+            <div id="module6" class="module">
+                <h2>Módulo 6: Componente Dinámico con `dummyjson`</h2>
+                <p>Aprende a traer datos de una API externa y mostrarlos en tu aplicación.</p>
+                <pre><code>
+import { useEffect, useState } from "react";
+
+const [datos, setDatos] = useState([]);
+
+useEffect(() => {
+  fetch('https://dummyjson.com/products')
+    .then(res => res.json())
+    .then(data => setDatos(data.products));
+}, []);
+                </code></pre>
+                <div class="quiz mt-4">
+                    <h4>Autoevaluación</h4>
+                    <p>1. ¿Qué hook de React se usa para realizar efectos secundarios, como un fetch de datos?</p>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q6_1" value="a"><label class="form-check-label">useState</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q6_1" value="b"><label class="form-check-label">useEffect</label></div>
+                    <button class="btn btn-primary" onclick="checkQuiz(6)">Revisar</button>
+                    <div id="quizResult6" class="mt-2"></div>
+                </div>
+            </div>
+
+            <!-- Modulo 7 -->
+            <div id="module7" class="module">
+                <h2>Módulo 7: Anatomía de un Componente Dinámico</h2>
+                <p>Este es el corazón de nuestras páginas de contenido. Analicemos el componente <code>Movil.jsx</code>.</p>
+                
+                <h5>1. Importaciones</h5>
+                <p>Se importan los hooks <code>useEffect</code> y <code>useState</code> de React, y el componente <code>Cardprod</code> que se usará para mostrar cada producto.</p>
+                <pre><code>import { useEffect, useState } from "react";
+import Cardprod from "../components/Cardprod";</code></pre>
+
+                <h5>2. Constante de la API</h5>
+                <p>Se define la URL de la API de donde se obtendrán los datos.</p>
+                <pre><code>const API = 'https://dummyjson.com/products/category/smartphones';</code></pre>
+
+                <h5>3. Estados del Componente</h5>
+                <p>Se utilizan tres estados:</p>
+                <ul>
+                    <li><b>datos:</b> Para almacenar los productos obtenidos de la API.</li>
+                    <li><b>loading:</b> Para saber si la carga de datos está en curso.</li>
+                    <li><b>error:</b> Para almacenar cualquier error que ocurra durante la carga.</li>
+                </ul>
+                <pre><code>const [datos, setDatos] = useState([]);
+const [loading, setLoading] = useState(true);
+const [error, setError] = useState(null);</code></pre>
+
+                <h5>4. Carga de Datos (<code>getDatos</code> y <code>useEffect</code>)</h5>
+                <p>La función <code>getDatos</code> es una función asíncrona que hace la petición a la API. El hook <code>useEffect</code> se asegura de que esta función se llame solo una vez, cuando el componente se monta por primera vez.</p>
+                <pre><code>useEffect(() => {
+    getDatos();
+}, []);</code></pre>
+
+                <h5>5. Renderizado Condicional</h5>
+                <p>Mientras se cargan los datos (<code>loading === true</code>), se muestra un spinner. Si hay un error, se muestra un mensaje de error. Esto mejora la experiencia del usuario.</p>
+
+                <h5>6. Renderizado de la Lista</h5>
+                <p>Una vez que los datos se han cargado, se utiliza <code>.map()</code> para recorrer el array <code>datos</code> y renderizar un componente <code>Cardprod</code> por cada elemento.</p>
+                <pre><code>{datos.map((item) => (
+    &lt;Cardprod item={item} key={item.id}/&gt;
+))}</code></pre>
+
+                <div class="quiz mt-4">
+                    <h4>Autoevaluación</h4>
+                    <p>1. ¿Qué hook se usa para guardar los datos de la API?</p>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q7_1" value="a"><label class="form-check-label">useEffect</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q7_1" value="b"><label class="form-check-label">useState</label></div>
+                    <p>2. ¿Para qué sirve el segundo argumento <code>[]</code> en <code>useEffect</code>?</p>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q7_2" value="a"><label class="form-check-label">Para que se ejecute en cada render.</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q7_2" value="b"><label class="form-check-label">Para que se ejecute solo una vez.</label></div>
+                    <button class="btn btn-primary" onclick="checkQuiz(7)">Revisar</button>
+                    <div id="quizResult7" class="mt-2"></div>
+                </div>
+            </div>
+
+            <!-- Modulo 8 -->
+            <div id="module8" class="module">
+                <h2>Módulo 8: Rutas Dinámicas y Componentes Reutilizables</h2>
+                <p>Vamos a ver cómo crear páginas que cambian según la URL y cómo reutilizar componentes para ser más eficientes.</p>
+
+                <h5>1. El Componente <code>FiltroCategorias.jsx</code></h5>
+                <p>Este componente es un buen ejemplo de reutilización. Su única responsabilidad es obtener la lista de todas las categorías de productos y mostrarlas como una lista de enlaces. La ventaja es que podemos usar este componente en cualquier parte de la aplicación (por ejemplo, en un menú de navegación) sin tener que reescribir la lógica.</p>
+                <pre><code>// En FiltroCategorias.jsx
+{datos && datos.map((item, index) => (
+    &lt;li key={index}&gt;&lt;Link to={`/categorias/${item}`} ...&gt;{item}&lt;/Link&gt;&lt;/li&gt;
+))}</code></pre>
+
+                <h5>2. Rutas con Parámetros</h5>
+                <p>En nuestro sistema de rutas (<code>App.jsx</code>), definimos una ruta que acepta un parámetro dinámico. La sintaxis <code>:id</code> le dice a React Router que esa parte de la URL puede variar.</p>
+                <pre><code>// En App.jsx
+&lt;Route path="/categorias/:id" element={&lt;Categorias/&gt;} /&gt;</code></pre>
+                <p>Cuando un usuario hace clic en un enlace generado por <code>FiltroCategorias</code>, navega a una URL como <code>/categorias/smartphones</code>. El valor <code>smartphones</code> es el parámetro.</p>
+
+                <h5>3. Accediendo al Parámetro con <code>useParams</code></h5>
+                <p>El componente <code>Categorias.jsx</code> necesita saber qué categoría mostrar. Para ello, usa el hook <code>useParams</code> de React Router, que devuelve un objeto con los parámetros de la URL.</p>
+                <pre><code>// En Categorias.jsx
+import { useParams } from "react-router-dom";
+
+const params = useParams(); // params será { id: 'smartphones' }
+const URI = API + params.id; // Se construye la URL de la API dinámicamente</code></pre>
+
+                <h5>4. Re-ejecutando el Efecto</h5>
+                <p>Queremos que los productos se actualicen cada vez que el usuario elija una nueva categoría. Para lograrlo, añadimos <code>params.id</code> al array de dependencias del hook <code>useEffect</code>. Esto le indica a React que debe volver a ejecutar el efecto (y por lo tanto, hacer una nueva petición a la API) cada vez que el valor de <code>params.id</code> cambie.</p>
+                <pre><code>// En Categorias.jsx
+useEffect(() => {
+    getDatos();
+}, [params.id]); // Se ejecuta cada vez que cambia el id de la categoría</code></pre>
+
+                <div class="quiz mt-4">
+                    <h4>Autoevaluación</h4>
+                    <p>1. ¿Qué hook de React Router se usa para leer parámetros de la URL?</p>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q8_1" value="a"><label class="form-check-label">useState</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q8_1" value="b"><label class="form-check-label">useParams</label></div>
+                    <p>2. ¿Qué significa la sintaxis <code>:id</code> en la definición de una ruta?</p>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q8_2" value="a"><label class="form-check-label">Es un parámetro dinámico.</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q8_2" value="b"><label class="form-check-label">Es una ruta estática.</label></div>
+                    <p>3. ¿Por qué se añade `params.id` al array de dependencias de `useEffect` en `Categorias.jsx`?</p>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q8_3" value="a"><label class="form-check-label">Para que los datos se carguen solo una vez.</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q8_3" value="b"><label class="form-check-label">Para que los datos se recarguen si la categoría cambia.</label></div>
+                    <button class="btn btn-primary" onclick="checkQuiz(8)">Revisar</button>
+                    <div id="quizResult8" class="mt-2"></div>
+                </div>
+            </div>
+
+            <!-- Modulo 9 -->
+            <div id="module9" class="module">
+                <h2>Módulo 9: Paginación de Resultados</h2>
+                <p>Cuando trabajamos con grandes cantidades de datos, es fundamental paginar los resultados para mejorar el rendimiento y la experiencia de usuario.</p>
+
+                <h5>1. Nuevos Estados para la Paginación</h5>
+                <p>En <code>Tienda.jsx</code>, añadimos tres nuevos estados para controlar la paginación:</p>
+                <ul>
+                    <li><b>skip:</b> Indica cuántos productos se deben "saltar" o ignorar al principio de la lista. Es el punto de partida para cada página.</li>
+                    <li><b>total:</b> Almacena el número total de productos disponibles en la API. Es crucial para saber cuándo detener la paginación.</li>
+                    <li><b>pagina:</b> Define cuántos productos queremos mostrar por página (en este caso, 12).</li>
+                </ul>
+                <pre><code>const [skip, setSkip] = useState(0);
+const [total, setTotal] = useState(0);
+const [pagina, setPagina] = useState(12);</code></pre>
+
+                <h5>2. API con Parámetros <code>limit</code> y <code>skip</code></h5>
+                <p>La API de <code>dummyjson</code> nos permite controlar la paginación mediante parámetros en la URL. La URL se construye dinámicamente usando el estado <code>skip</code>.</p>
+                <pre><code>const API = 'https://dummyjson.com/products?limit=12&skip=';
+const URI = API + skip; // Ejemplo: ...?limit=12&skip=0, ...?limit=12&skip=12, etc.</code></pre>
+                <p><code>limit=12</code> le dice a la API que solo nos devuelva 12 productos, y <code>skip=...</code> le indica desde qué punto empezar.</p>
+
+                <h5>3. Lógica de los Botones de Paginación</h5>
+                <p>Los botones "Anterior" y "Siguiente" modifican el estado <code>skip</code> para cambiar de página.</p>
+                <h6>Botón Anterior:</h6>
+                <pre><code>onClick={() => {
+    if (skip >= pagina) { // Comprueba si no estamos en la primera página
+        setSkip(skip - pagina); // Resta 12 a skip para ir a la página anterior
+    }
+}}</code></pre>
+                <h6>Botón Siguiente:</h6>
+                <pre><code>onClick={() => {
+    if (skip + pagina < total) { // Comprueba si hay más productos para mostrar
+        setSkip(skip + pagina); // Suma 12 a skip para ir a la página siguiente
+    }
+}}</code></pre>
+
+                <h5>4. <code>useEffect</code> y la Dependencia de <code>skip</code></h5>
+                <p>Al igual que en el módulo anterior, usamos el array de dependencias de <code>useEffect</code>. Esta vez, le pasamos <code>[skip]</code>. Esto hace que cada vez que <code>skip</code> cambie (es decir, cada vez que el usuario pulse un botón de paginación), el efecto se vuelva a ejecutar, realizando una nueva petición a la API para obtener los productos de la nueva página.</p>
+                <pre><code>useEffect(() => {
+    getDatos();
+}, [skip]);</code></pre>
+
+                <div class="quiz mt-4">
+                    <h4>Autoevaluación</h4>
+                    <p>1. ¿Qué estado se modifica para cambiar de página?</p>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q9_1" value="a"><label class="form-check-label">total</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q9_1" value="b"><label class="form-check-label">skip</label></div>
+                    <p>2. ¿Qué parámetro de la URL de la API define cuántos productos obtener?</p>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q9_2" value="a"><label class="form-check-label">limit</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q9_2" value="b"><label class="form-check-label">skip</label></div>
+                    <p>3. ¿Por qué es importante el estado `total`?</p>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q9_3" value="a"><label class="form-check-label">Para saber cuándo deshabilitar el botón "Siguiente".</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q9_3" value="b"><label class="form-check-label">Para saber cuántos productos saltar.</label></div>
+                    <button class="btn btn-primary" onclick="checkQuiz(9)">Revisar</button>
+                    <div id="quizResult9" class="mt-2"></div>
+                </div>
+            </div>
+
+            <!-- Modulo 10 -->
+            <div id="module10" class="module">
+                <h2>Módulo 10: Implementando Búsquedas</h2>
+                <p>Una funcionalidad clave en muchas aplicaciones es la búsqueda. Veremos cómo implementarla comunicando dos componentes a través del estado de la ruta.</p>
+
+                <h5>1. El Formulario en <code>Header.jsx</code></h5>
+                <p>El `Header` contiene el campo de búsqueda. Para que funcione, necesitamos:</p>
+                <ul>
+                    <li><b>Un estado para el input:</b> Se usa <code>useState</code> para guardar lo que el usuario escribe.</li>
+                    <li><b>Un manejador de eventos:</b> La función <code>manejoEnvio</code> se ejecuta cuando el usuario envía el formulario.</li>
+                    <li><b>Navegación programática:</b> Se usa el hook <code>useNavigate</code> para redirigir al usuario a la página de resultados.</li>
+                </ul>
+                <pre><code>// En Header.jsx
+const [txtbuscar, setTxtbuscar] = useState('');
+const navigate = useNavigate();
+
+const manejoEnvio = (event) => {
+    event.preventDefault();
+    navigate('/busquedas', { state: txtbuscar });
+};</code></pre>
+                <p>Lo más importante aquí es <code>navigate('/busquedas', { state: txtbuscar })</code>. No solo cambiamos de página, sino que también pasamos el término de búsqueda (`txtbuscar`) a través del objeto `state` de la navegación.</p>
+
+                <h5>2. La Página de Resultados <code>Busquedas.jsx</code></h5>
+                <p>Esta página debe recibir el término de búsqueda y mostrar los resultados.</p>
+                
+                <h6>Recepción de datos con <code>useLocation</code></h6>
+                <p>El hook <code>useLocation</code> nos da acceso a la información de la ruta actual, incluyendo el objeto `state` que enviamos desde el `Header`.</p>
+                <pre><code>// En Busquedas.jsx
+import { useLocation } from 'react-router-dom';
+
+const location = useLocation();
+const txtBuscar = location.state; // Recuperamos el término de búsqueda</code></pre>
+
+                <h6>API de Búsqueda de `dummyjson`</h6>
+                <p>La API de `dummyjson` ofrece un endpoint específico para búsquedas. La consulta se pasa como un parámetro `q` en la URL.</p>
+                <pre><code>const API = 'https://dummyjson.com/products/search?q=';
+const URI = API + txtBuscar; // Se construye la URL final</code></pre>
+
+                <h6>Disparando la Búsqueda</h6>
+                <p>Finalmente, al igual que en módulos anteriores, <code>useEffect</code> se encarga de llamar a la API. Se ejecuta cada vez que <code>txtBuscar</code> cambia, asegurando que se realice una nueva búsqueda si el usuario decide buscar otra cosa.</p>
+                <pre><code>useEffect(() => {
+    getDatos();
+}, [txtBuscar]);</code></pre>
+
+                <div class="quiz mt-4">
+                    <h4>Autoevaluación</h4>
+                    <p>1. ¿Qué hook se usa para navegar a otra ruta y pasarle datos?</p>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q10_1" value="a"><label class="form-check-label">useLocation</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q10_1" value="b"><label class="form-check-label">useNavigate</label></div>
+                    <p>2. ¿Cómo se pasan datos de una ruta a otra al navegar?</p>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q10_2" value="a"><label class="form-check-label">A través del objeto `state`.</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q10_2" value="b"><label class="form-check-label">A través de parámetros en la URL.</label></div>
+                    <p>3. ¿Qué hook se usa en la página de destino para leer los datos pasados?</p>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q10_3" value="a"><label class="form-check-label">useLocation</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q10_3" value="b"><label class="form-check-label">useParams</label></div>
+                    <button class="btn btn-primary" onclick="checkQuiz(10)">Revisar</button>
+                    <div id="quizResult10" class="mt-2"></div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="d-flex justify-content-between mt-4">
+            <button id="prevBtn" class="btn btn-secondary" onclick="navigate(-1)" disabled>Anterior</button>
+            <button id="nextBtn" class="btn btn-primary" onclick="navigate(1)">Siguiente</button>
+        </div>
+    </main>
+
+    <script>
+        let currentModule = 1;
+        const totalModules = 10;
+        const correctAnswers = {
+            1: { q1_1: 'b', q1_2: 'a' },
+            2: { q2_1: 'b' },
+            3: { q3_1: 'a' },
+            4: { q4_1: 'b' },
+            5: { q5_1: 'b' },
+            6: { q6_1: 'b' },
+            7: { q7_1: 'b', q7_2: 'b' },
+            8: { q8_1: 'b', q8_2: 'a', q8_3: 'b' },
+            9: { q9_1: 'b', q9_2: 'a', q9_3: 'a' },
+            10: { q10_1: 'b', q10_2: 'a', q10_3: 'a' }
+        };
+
+        function showModule(moduleNumber) {
+            document.querySelectorAll('.module').forEach(module => module.classList.remove('active'));
+            document.getElementById('module' + moduleNumber).classList.add('active');
+        }
+
+        function updateProgressBar() {
+            const progress = (currentModule - 1) / (totalModules - 1) * 100;
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = progress + '%';
+            progressBar.setAttribute('aria-valuenow', progress);
+            progressBar.textContent = Math.round(progress) + '%';
+        }
+
+        function navigate(direction) {
+            currentModule += direction;
+            if (currentModule < 1) currentModule = 1;
+            if (currentModule > totalModules) currentModule = totalModules;
+
+            document.getElementById('prevBtn').disabled = currentModule === 1;
+            document.getElementById('nextBtn').disabled = currentModule === totalModules;
+
+            showModule(currentModule);
+            updateProgressBar();
+        }
+
+        function checkQuiz(moduleNumber) {
+            const quiz = correctAnswers[moduleNumber];
+            let score = 0;
+            let total = 0;
+            for (const question in quiz) {
+                total++;
+                const userAnswer = document.querySelector(`input[name="${question}"]:checked`);
+                if (userAnswer && userAnswer.value === quiz[question]) {
+                    score++;
+                }
+            }
+            const resultDiv = document.getElementById('quizResult' + moduleNumber);
+            resultDiv.innerHTML = `Tu puntuación es: ${score} de ${total}`;
+            resultDiv.className = score === total ? 'alert alert-success mt-2' : 'alert alert-danger mt-2';
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            showModule(currentModule);
+            updateProgressBar();
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+.app {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+.bg-menu{
+  background-color: #502c4e;
+}
+.hero {
+            background: linear-gradient(to right, #8e2de2, #4a00e0);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            border-radius: 0.5rem;
+            border: 1px solid #4a00e0;
+        }
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 18px;
+            height: 100%;
+            width: 4px;
+            background: #30363d;
+        }
+        .timeline-item {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+        .timeline-icon {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #8e2de2;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            border: 3px solid #0a192f;
+        }
+        .timeline-content {
+            margin-left: 60px;
+            background: #1c2b41;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid #30363d;
+        }
+        .timeline-content h3 {
+            color: #c397fb;
+        }
+        .text-center h2 {
+            color: #c397fb;
+        }
+body {
+            background-color: #0a192f;
+            color: #cdd6f4;
+        }
+        .header {
+            background-color: #1c2b41;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            border: 1px solid #30363d;
+        }
+        .header h1 {
+            color: #c397fb;
+        }
+        .category {
+            background: #1c2b41;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #30363d;
+        }
+        .category h3 {
+            color: #88c0d0;
+            border-bottom: 2px solid #30363d;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        dt {
+            color: #a3be8c;
+            font-weight: bold;
+        }
+        dd {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
