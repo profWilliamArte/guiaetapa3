@@ -18,6 +18,21 @@ const Busquedas = ({carrito, agregarAlCarrito}) => {
     // 🔹 txtBuscar: obtenemos el término enviado desde el Header mediante navigate(..., { state })
     // Usamos optional chaining (?.) y trim() para evitar espacios innecesarios.
     const txtBuscar = location.state?.trim() || '';
+    /*
+    location.state: Intenta acceder a la propiedad state del objeto location.
+        ?. (Optional Chaining):
+        Si location.state existe (no es null ni undefined), la ejecución continúa con la siguiente parte (.trim()).
+        Si location.state NO existe (es null o undefined), la ejecución se detiene en este punto, y toda la expresión hasta antes del || evalúa a undefined.
+        .trim(): Si location.state existe, se llama al método trim() (que elimina espacios en blanco al inicio y al final de una cadena) sobre el valor de location.state.
+        || '' (Operador OR lógico):
+        Si el resultado de la expresión anterior (location.state?.trim()) es un valor "falsy" (como undefined, null, o una cadena vacía ''), entonces se asigna la cadena vacía ('') a txtBuscar.
+        Esto asegura que txtBuscar siempre será una cadena (el término de búsqueda o ''), nunca null o undefined.
+    */
+
+
+
+
+    
 
     // 🔹 URI: armamos la URL completa solo cuando tenemos un término válido.
     // Esto mantiene clara la diferencia entre API (fija) y URI (dinámica).

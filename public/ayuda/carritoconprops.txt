@@ -147,6 +147,7 @@ Es funcional, robusta y didáctica.
 Refuerza los fundamentos de React (estado, props, efectos).
 Introduce buenas prácticas de persistencia.
 Sirve como base para entender por qué necesitamos Context API en aplicaciones más grandes.
+<<<<<<< HEAD
 
 
 
@@ -344,3 +345,5 @@ descripcion de las funciones
                 { "id": 5, "quantity": 1 }
             ]
         }
+=======
+>>>>>>> e18fb7feafbed3873eaa39f811ce572ac86267be

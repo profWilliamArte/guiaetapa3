@@ -45,18 +45,29 @@ const App = () => {
   }, [carrito]);
 
 
-  // 🔹 Función para agregar producto al carrito
+
+  // Esta función agrega un producto al carrito de compras.
+  // Pero antes de agregarlo, verifica si ya está en el carrito:
+  // Si ya está, solo aumenta su cantidad en 1.
+  // Si no está, lo agrega como un nuevo ítem con cantidad inicial de 1.
   const agregarAlCarrito = (producto) => {
-    setCarrito(prev => {
+    setCarrito(prev => { //prev es el valor actual del carrito (el estado anterior).
       // Ver si ya existe en el carrito
-      const existe = prev.find(item => item.id === producto.id);
+      const existe = prev.find(item => item.id === producto.id); //.find() recorre el carrito y devuelve el primer producto cuyo id coincida.
       if (existe) {
-        // Actualizar cantidad
+        // Si YA EXISTE → aumentar la cantidad
         return prev.map(item =>
           item.id === producto.id
             ? { ...item, cantidad: item.cantidad + 1 }
             : item
         );
+       // .map() crea un nuevo arreglo basado en el anterior.
+       // Para cada ítem:
+       // Si su id coincide → crea una copia del ítem (...item) y cambia solo la cantidad.
+       // Si no coincide → lo deja igual.
+       // 🎯 Resultado: solo se modifica la cantidad del producto repetido, sin tocar los demás. 
+
+        
       } else {
         // Agregar nuevo producto con cantidad 1
         return [...prev, { ...producto, cantidad: 1 }];
@@ -176,3 +187,13 @@ const App = () => {
 }
 
 export default App
+
+
+
+
+
+
+
+
+
+
