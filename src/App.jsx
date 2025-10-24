@@ -66,7 +66,7 @@ const App = () => {
 
   // 🔹 Función para eliminar producto del carrito
   const eliminarDelCarrito = (id) => {
-    setCarrito(prev => prev.filter(item => item.id !== id));
+       setCarrito(prev => prev.filter(item => item.id !== id));
   };
 
   // 🔹 Función para actualizar cantidad
