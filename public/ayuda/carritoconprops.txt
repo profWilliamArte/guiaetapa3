@@ -1,3 +1,59 @@
+
+Mejoras Clave en Busquedas
+
+1. Manejo del Término de Búsqueda (Robustez)
+
+  Código Original	Código Mejorado	Beneficio
+    const txtBuscar = location.state;	        // original
+    const txtBuscar = location.state?.trim()  // mejorado	
+  
+    const URI=API+txtBuscar;	                                            // original
+    const URI = txtBuscar ? API + encodeURIComponent(txtBuscar) : null;	  // mejorado
+  
+  ✅ Seguridad de URL: Utiliza encodeURIComponent() para hacer que la URL sea válida, manejando espacios y caracteres especiales.
+
+2. Rendimiento y Advertencias de React (Eficiencia)
+
+  Código Original	Código Mejorado	Beneficio
+    const getDatos = async () => {...}	
+    const getDatos = useCallback(async () => {...}, [URI]);	
+    ✅ Estabilidad de la Función: 
+        El uso de useCallback "memoriza" la función getDatos. 
+        Esto evita que la función se recree en cada renderizado, lo que a su vez elimina la advertencia de dependencia de useEffect y mejora el rendimiento.
+
+    useEffect(() => { getDatos(); }, [txtBuscar]);	
+    useEffect(() => { /* lógica de verificación */ }, [txtBuscar, getDatos]);	
+    ✅ Uso Correcto de Dependencias: 
+        Al usar useCallback, se sigue la regla de React de incluir a getDatos en el array de dependencias de useEffect sin causar bucles de renderizado.
+
+3. Experiencia de Usuario y Lógica (UX y Robustez)
+
+  Código Original	Código Mejorado	Beneficio
+    Sin validación para txtBuscar vacío.	
+    Incluye if (!URI) { ... return; } en getDatos.	
+    ✅ Control de Flujo: 
+      Detiene la llamada a fetch si no hay término de búsqueda, evitando solicitudes innecesarias o con errores.
+
+      El setLoading(false) solo está en el try y en el catch.	
+      El setLoading(false) está en el bloque finally.	
+    ✅ Manejo de Carga: 
+        Garantiza que el estado de carga (loading) siempre se desactive, 
+        incluso si hay un error desconocido o no manejado dentro del try/catch.
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
 🛒 Etapa 3: Carrito de Compras – Versión 1 (Gestión con Props)
 🎯 Objetivo
 Implementar un carrito de compras funcional que permita a los usuarios:
